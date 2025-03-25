@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Basic -->
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- Mobile Metas -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <!-- Site Metas -->
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+      
+        <title>arfan autotranslate</title>
+        <!-- slider stylesheet -->
+        <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+      
+        <!-- bootstrap core css -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}" />
+      
+        <!-- fonts style -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700|Raleway:400,700&display=swap"
+          rel="stylesheet" />
+      
+        <!-- Custom styles for this template -->
+        <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+        <!-- responsive style -->
+        <link href="{{ url_for('static', filename='css/responsive.css') }}" rel="stylesheet" />
+        <style>
+             select {
+      width: 50%; /* Membuat seleksi full width */
+      padding: 12px; /* Menambah padding agar lebih besar */
+      border: 2px solid #007bff; /* Border warna biru */
+      border-radius: 8px; /* Membuat tepi seleksi melengkung */
+      background-color: #f8f9fa; /* Background abu-abu muda */
+      color: #007bff; /* Warna teks biru */
+      font-size: 16px; /* Ukuran teks */
+      font-weight: bold; /* Membuat teks lebih tebal */
+      appearance: none; /* Menghilangkan tampilan default dropdown browser */
+      cursor: pointer; /* Menambahkan pointer pada hover */
+    }
+
+    /* Custom arrow untuk select */
+    select::-ms-expand {
+      display: none;
+    }
+
+    /* Hover effect */
+    select:hover {
+      background-color: #e2e6ea; /* Mengubah background saat dihover */
+    }
+
+    /* Focus effect */
+    select:focus {
+      outline: none; /* Menghilangkan outline default */
+      box-shadow: 0 0 5px 2px rgba(0, 123, 255, 0.5); /* Glow efek saat focus */
+    }
+
+    /* Custom style untuk icon dropdown */
+    .select-container {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .select-container::after {
+      content: '\25BC'; /* Menambahkan icon panah dropdown */
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      transform: translateY(-50%);
+      pointer-events: none; /* Mencegah klik pada icon */
+      color: #007bff; /* Warna icon biru */
+    }
+    
+    /* Styling untuk label dan checkbox */
+    .custom-checkbox input[type="checkbox"] {
+      display: none; /* Sembunyikan default checkbox */
+    }
+
+    /* Custom checkbox tampilan */
+    .custom-checkbox label {
+      display: inline-block;
+      position: relative;
+      padding-left: 30px; /* Memberi ruang untuk custom checkbox */
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    /* Membuat kotak custom checkbox */
+    .custom-checkbox label::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #007bff; /* Border biru */
+      border-radius: 4px; /* Sedikit lengkung */
+      background-color: white; /* Background putih */
+      transition: background-color 0.3s ease;
+    }
+
+    /* Ikon centang pada checkbox yang aktif */
+    .custom-checkbox label::after {
+      content: '\2713'; /* Karakter centang */
+      position: absolute;
+      left: 4px;
+      top: 0;
+      font-size: 20px;
+      color: white;
+      opacity: 0; /* Sembunyikan centang awalnya */
+      transition: opacity 0.3s ease;
+    }
+
+    /* Jika checkbox dicentang */
+    .custom-checkbox input[type="checkbox"]:checked + label::before {
+      background-color: #007bff; /* Background biru saat dicentang */
+    }
+
+    .custom-checkbox input[type="checkbox"]:checked + label::after {
+      opacity: 1; /* Munculkan centang */
+    }
+
+    /* Hover effect */
+    .custom-checkbox label:hover::before {
+      background-color: #e2e6ea; /* Background abu-abu muda saat di-hover */
+    }
+        </style>
+      </head>
+<body class="sub_page">
+    <div class="hero_area">
+        <!-- header section strats -->
+        <header class="header_section">
+          <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg custom_nav-container">
+              <a class="navbar-brand" href="index.html">
+                <img src="{{ url_for('static', filename='images/arfan.png') }}" alt="" />
+                <span>
+                  Arfan
+                </span>
+              </a>
+            </nav>
+          </div>
+        </header>
+        <!-- end header section -->
+      </div>
+      <section class="dish_section layout_padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="dish_container">
+                <div class="box">
+                  <img src="" alt="">
+                </div>
+                <div class="box">
+                  <img src="" alt="">
+                </div>
+                <div class="box">
+                  <img src="" alt="">
+                </div>
+                <div class="box">
+                  <img src="" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="detail-box">
+                <div class="heading_container">
+                  <hr>
+                  <h2>
+                    Cetak <br>
+                    Hasil <br>
+                    Translate
+                  </h2>
+                  
+                </div>
+                <br><br>
+                <form action="/save" method="POST">
+                    <input type="hidden" name="translated_text" value="{{ translated_text }}">
+                    <label for="format_option">Simpan Sebagai:</label>
+                    <select name="format_option" id="format_option">
+                        <option value="pdf">PDF</option>
+                        <option value="docx">DOCX</option>
+                        <option value="txt">TXT</option>
+                    </select>
+                    <div class="container mt-5">
+                        <!-- Custom checkbox dengan label -->
+                        <div class="custom-checkbox">
+                          <input type="checkbox" id="structured_format" name="structured_format" value="yes">
+                          <label for="structured_format">Print with paragraph structure</label>
+                        </div>
+                      </div>
+                    
+                    <!-- <div class="img-box">
+                        <label for="structured_format">
+                            <input type="checkbox" id="structured_format" name="structured_format" value="yes">
+                        </label>
+                        <h6>Print with paragraph structure</h6>
+                    </div> -->
+                    
+                    <button style="width: 50%;" class="btn btn-primary" type="submit">Save</button>
+                </form>
+        
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+      <!-- contact section -->
+      <section class="hot_section">
+        <div class="container">
+            <form action="{{ url_for('ppt_choice') }}" method="POST">
+                <h6>
+                    Pilih Opsi di Bawah untuk mencetak dengan format PPT
+                  </h6>
+                <input type="hidden" name="translated_text" value="{{ translated_text }}">
+                <button style="width: 40%;" class="btn btn-primary" type="submit">Cetak PPTX</button>
+            </form>
+            <br><br>
+          <div class="heading_container">
+            <h2>
+              Preview
+            </h2>
+            <hr>
+          </div>
+          <p>{{ translated_text }}</p>
+        </div>
+        
+      </section>
+
+<!-- 
+    <form action="/save" method="POST">
+        <input type="hidden" name="translated_text" value="{{ translated_text }}">
+        
+        <label for="format_option">Save as:</label>
+        <select name="format_option" id="format_option">
+            <option value="pdf">PDF</option>
+            <option value="docx">DOCX</option>
+            <option value="txt">TXT</option>
+        </select>
+        
+        <label for="structured_format">
+            <input type="checkbox" id="structured_format" name="structured_format" value="yes">
+            Print with paragraph structure
+        </label>
+        
+        <button type="submit">Save</button>
+    </form>
+
+    <form action="{{ url_for('ppt_choice') }}" method="POST">
+        <input type="hidden" name="translated_text" value="{{ translated_text }}">
+        <button type="submit">Choose PPTX Options</button>
+    </form> -->
+    
+</body>
+</html>

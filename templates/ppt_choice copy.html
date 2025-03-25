@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create PPTX</title>
+    <style>
+        /* Tambahan CSS untuk meningkatkan tampilan */
+        textarea {
+            width: 100%;
+            height: 200px;
+            resize: none;
+        }
+        .translated-text {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+            height: 200px;
+            overflow-y: auto;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generate PPTX from Translated Text</h1>
+    <form action="{{ url_for('pptx_blueprint.pptx_choice') }}" method="post">
+        <label for="title">Enter Slide Title:</label><br>
+        <input type="text" name="title" id="title" required><br><br>
+        
+        <label for="footer">Enter Footer:</label><br>
+        <input type="text" name="footer" id="footer" required><br><br>
+        
+        <label for="translated_text">Translated Text:</label><br>
+        <div class="translated-text">{{ translated_text }}</div>
+        
+        <input type="hidden" name="text" value="{{ translated_text }}"> <!-- Menyimpan teks yang sudah diterjemahkan -->
+        
+        <button type="submit">Create PPTX</button>
+    </form>
+</body>
+</html>

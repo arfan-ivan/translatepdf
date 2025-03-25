@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview Translation</title>
+</head>
+<body>
+    <h1>Preview Translation</h1>
+    <p>{{ translated_text }}</p>
+
+    <form action="/save" method="POST">
+        <input type="hidden" name="translated_text" value="{{ translated_text }}">
+        
+        <label for="format_option">Save as:</label>
+        <select name="format_option" id="format_option">
+            <option value="pdf">PDF</option>
+            <option value="docx">DOCX</option>
+            <option value="txt">TXT</option>
+        </select>
+        
+        <label for="structured_format">
+            <input type="checkbox" id="structured_format" name="structured_format" value="yes">
+            Print with paragraph structure
+        </label>
+        
+        <button type="submit">Save</button>
+    </form>
+
+    <form action="{{ url_for('ppt_choice') }}" method="POST">
+        <input type="hidden" name="translated_text" value="{{ translated_text }}">
+        <button type="submit">Choose PPTX Options</button>
+    </form>
+    
+</body>
+</html>

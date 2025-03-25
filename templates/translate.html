@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Basic -->
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- Mobile Metas -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <!-- Site Metas -->
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+      
+        <title>arfan autotranslate</title>
+        <!-- slider stylesheet -->
+        <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+      
+        <!-- bootstrap core css -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}" />
+      
+        <!-- fonts style -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700|Raleway:400,700&display=swap"
+          rel="stylesheet" />
+      
+        <!-- Custom styles for this template -->
+        <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+        <!-- responsive style -->
+        <link href="{{ url_for('static', filename='css/responsive.css') }}" rel="stylesheet" />
+      </head>
+<body>
+    <div class="hero_area">
+        <header class="header_section">
+            <div class="container-fluid">
+              <nav class="navbar navbar-expand-lg custom_nav-container">
+                <a class="navbar-brand" href="index.html">
+                  <img src="{{ url_for('static', filename='images/arfan.png') }}" alt="" />
+                  <span>
+                    Arfan
+                  </span>
+                </a>
+              
+            </div>
+            </header>
+            <section class=" slider_section position-relative">
+                <div class="side_heading">
+                  <h5>
+                    A
+                    r
+                    f
+                    a
+                    n
+                  </h5>
+                </div>
+            <form method="POST" action="/translate">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 offset-md-1">
+                      <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <div class="img-box b-1">
+                                <textarea style="height: 100%;" name="text">{{ text }}</textarea>
+                            </div>
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                    <div class=" col-md-5 offset-md-1">
+                      <div class="detail-box">
+                        <h1>
+                          Translate <br>
+                          Text
+                        </h1>
+                        <p>Text telah berhasil di pisah dari format PDF lanjutkan memilih bahasa target untuk ke halaman translate, jika loading terlalu lama harap tunggu, karena faktor komputasi server yang terbatas Request untuk program akan di kirim dengan batch batch kecil</p>
+                        
+                            <div class="btn-box">
+                                <select class="btn-1" style="padding: 2%;" name="target_lang">
+                                    {% for code, name in languages.items() %}
+                                        <option value="{{ code }}">{{ name }}</option>
+                                    {% endfor %}
+                                </select>
+                                <input class="btn-2" style="padding: 2%;" type="submit" value="Translate">
+                            </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </form>
+              </section>
+    </div>
+              <!-- end slider section -->
+    <!-- <h1>Translate Text</h1>
+    <form method="POST" action="/translate">
+        <textarea name="text">{{ text }}</textarea>
+        <select name="target_lang">
+            {% for code, name in languages.items() %}
+                <option value="{{ code }}">{{ name }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Translate">
+    </form> -->
+</body>
+</html>

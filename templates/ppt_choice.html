@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <!-- Basic -->
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- Mobile Metas -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <!-- Site Metas -->
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+      
+        <title>arfan autotranslate</title>
+        <!-- slider stylesheet -->
+        <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+      
+        <!-- bootstrap core css -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}" />
+      
+        <!-- fonts style -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700|Raleway:400,700&display=swap"
+          rel="stylesheet" />
+      
+        <!-- Custom styles for this template -->
+        <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+        <!-- responsive style -->
+        <link href="{{ url_for('static', filename='css/responsive.css') }}" rel="stylesheet" />
+    <style>
+        /* Tambahan CSS untuk meningkatkan tampilan */
+        textarea {
+            width: 100%;
+            height: 200px;
+            resize: none;
+        }
+        .translated-text {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+            height: 200px;
+            overflow-y: auto;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body class="sub_page">
+    <div class="hero_area">
+        <!-- header section strats -->
+        <header class="header_section">
+          <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg custom_nav-container">
+              <a class="navbar-brand" href="index.html">
+                <img src="{{ url_for('static', filename='images/arfan.png') }}" alt="" />
+                <span>
+                 Arfan
+                </span>
+              </a>
+              </div>
+            </nav>
+          </div>
+        </header>
+        <!-- end header section -->
+      </div>
+    <section class="about_section">
+        <form action="{{ url_for('pptx_blueprint.pptx_choice') }}" method="post">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-5 offset-md-1">
+              <div class="detail-box">
+                <div class="heading_container">
+                  <h2>
+                    Cetak <br>
+                    Hasil Translate ke<br>
+                    PPT
+                  </h2>
+                  <hr>
+                </div>
+                <p>
+                  silahkan isi Header untuk setiap Slide ppt, dan Footernya
+                </p>
+                
+                    <label for="title">Slide Title:</label><br>
+                    <input type="text" name="title" id="title" required><br><br>
+                    
+                    <label for="footer">Footer:</label><br>
+                    <input type="text" name="footer" id="footer" required><br><br>
+                    
+                    
+                    
+                    <input type="hidden" name="text" value="{{ translated_text }}"> <!-- Menyimpan teks yang sudah diterjemahkan -->
+                    
+                    <button style="width: 40%;" class="btn btn-primary" type="submit">Create PPTX</button>
+                
+              </div>
+            </div>
+            <div class="col-md-6 px-0">
+                <label for="translated_text"><h5>Translated Text:</h5></label><br>
+                <div style="height: 500px;" class="translated-text">{{ translated_text }}</div>
+            </div>
+          </div>
+        </div>
+    </form>
+      </section>
+    <!-- <h1>Generate PPTX from Translated Text</h1>
+    <form action="{{ url_for('pptx_blueprint.pptx_choice') }}" method="post">
+        <label for="title">Enter Slide Title:</label><br>
+        <input type="text" name="title" id="title" required><br><br>
+        
+        <label for="footer">Enter Footer:</label><br>
+        <input type="text" name="footer" id="footer" required><br><br>
+        
+        <label for="translated_text">Translated Text:</label><br>
+        <div class="translated-text">{{ translated_text }}</div>
+        
+        <input type="hidden" name="text" value="{{ translated_text }}"> 
+        
+        <button type="submit">Create PPTX</button>
+    </form> -->
+</body>
+</html>
